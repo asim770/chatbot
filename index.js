@@ -39,3 +39,4 @@ async function getAIresponse(prompt) {
     }
 
 }
+console.log(".");
