@@ -11,44 +11,7 @@
     <br><br>
     <div class="chat" id="chat"></div>
     <script src="index.js">
-        const input=document.getElementById('input')
-const button=document.getElementById('send')
-const chatBox=document.getElementById('chat')
-button.addEventListener('click',async function(e){
-    e.preventDefault();
-    const promt=input.value;
-    const newElement= document.createElement('p');
-    newElement.innerText=`User: ${promt}`;
-    chatBox.appendChild(newElement);
-    const aiResponse= await getAIresponse(promt);
-    if(aiResponse){
-        const air= document.createElement('p');
-        air.innerText=`Bot: ${aiResponse}`;
-        chatBox.appendChild(air);
-    }
-
-    console.log(aiResponse);
-})
-async function getAIresponse(prompt) {
-    const API_KEY="AIzaSyAb5-FPFkbe_7BJl_92i-6lP4vQFtZlw"
-    const URL="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAb5-FPFkbe_7BJl_92i-6lP4vQFtZlw"
-    try{
-        const data= await fetch(URL,{
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
-        });
-        const answer= await data.json();
-        return answer;
-    }
-    catch(error){
-        console.error("There is an error",error);
-        return "Error: Unable to get response.";
-    }
-
-}
+        
     </script>
 </body>
 </html>
