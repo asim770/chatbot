@@ -3,13 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
     <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height */
+            margin: 0;
+            background-color: #f4f4f4;
+            background-image: url(https://agency.siteimage.com.ua/wp-content/uploads/2024/07/ivan.pylypchuk_a_blue_3D_AI_Chatbot_in_a_empty_space_in_the_sty_39af46e0-1b6e-4d45-856c-55f4bb56962e-1.png);
+            background-size: cover;
+        }
+
+        .chatbox {
+            height: 600px;
+            width: 400px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Stronger blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-radius: 10px; /* Optional: rounded corners */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            font-family: "ABeeZee";
+            color: antiquewhite;
+            padding: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: soft shadow */
+        }
+
+        .chat {
+            flex-grow: 1; /* Allows the chat area to expand */
+            overflow-y: auto; /* Enables scrolling */
+            max-height: 550px; /* Prevents chat from growing too large */
+            padding: 10px;
+        }
+
+        .inputbox {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr ;
+            column-gap: 5px;
+            height: 30px;
+        }
+        #input{
+            border: 0px;
+            border-radius: 17.5px;
+            padding-left: 10px;
+        }
+        #send{
+            height: 35px;
+            border: 0px;
+            border-radius: 17.5px;
+            color: white;
+            background-color: rgb(50, 91, 255);
+        }
+        input[type="text"] {
+            flex-grow: 1; /* Expands input to fill space */
+        }
+
+    </style>
 </head>
 <body>
-    <input type="text" name="" id="input">
-    <input type="submit" placeholder="send" id="send">
+    <div class="chatbox">
+        <div class="chat" id="chat"></div>
+        <div class="inputbox">
+            <input type="text" name="" id="input" style="height: 35px;">
+            <input type="submit" placeholder="send" id="send">
+        </div>
     <br><br>
-    <div class="chat" id="chat"></div>
+    </div>
     <script src="index.js">
         
     </script>

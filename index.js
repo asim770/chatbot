@@ -14,6 +14,7 @@ button.addEventListener('click',async function(e){
         air.innerText=`Bot: ${aiResponse}`;
         chatBox.appendChild(air);
     }
+    input.value="";
 
     console.log(aiResponse);
 })
