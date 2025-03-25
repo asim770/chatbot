@@ -2,19 +2,24 @@
 const input=document.getElementById('input')
 const button=document.getElementById('send')
 const chatBox=document.getElementById('chat')
+const setInput=[]
 button.addEventListener('click',async function(e){
     e.preventDefault();
-    const promt=input.value;
+    const prompt=input.value;
+    console.log(setInput);
     const newElement= document.createElement('p');
-    newElement.innerText=`User: ${promt}`;
+    newElement.innerText=`User: ${prompt}`;
+    setInput.push({ role: "user",text: prompt });
     chatBox.appendChild(newElement);
-    const aiResponse= await getAIresponse(promt);
+    const aiResponse= await getAIresponse(setInput);
     if(aiResponse){
         const air= document.createElement('p');
         air.innerText=`Bot: ${aiResponse}`;
+        setInput.push({role:"model", text: aiResponse });
         chatBox.appendChild(air);
     }
     input.value="";
+
 
     console.log(aiResponse);
 })
@@ -26,7 +31,10 @@ async function getAIresponse(prompt) {
             method: "POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
+                contents: prompt.map(entry => ({
+                    role: entry.role, // Ensure correct role assignment
+                    parts: [{ text: entry.text }]
+                }))
             })
         });
         const answer= await data.json();
@@ -39,4 +47,4 @@ async function getAIresponse(prompt) {
     }
 
 }
-console.log(".");
+console.log(setInput);
